@@ -1,0 +1,34 @@
+{
+  "name": "lab02-basic-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "build": "tsc",
+  "watch": "tsc -w",
+  "dev": "ts-node src/server.ts",
+  "start": "node dist/server.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Givehaha21/LAB02-Basic-REST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Givehaha21/LAB02-Basic-REST/issues"
+  },
+  "homepage": "https://github.com/Givehaha21/LAB02-Basic-REST#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
