@@ -138,9 +138,13 @@ app.get('/test', (req: Request, res: Response) => {
   res.send(output);
 });
 
-app.get('/events', (req: Request, res: Response) => {
-  res.json(events);
+ app.get("/events", (req, res) => {
+    const category = req.query.category;
+    const filteredEvents = events.filter((event) => event.category === category);
+    res.json(filteredEvents);
 });
+
+
 
 app.get('/books', (req: Request, res: Response) => {
   res.json(books);
