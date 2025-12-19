@@ -1,12 +1,11 @@
 // import express, { Request, Response } from 'express'
 import express from 'express';
 import type { Request, Response } from 'express';
+
 const app = express()
 const port = 3000
-
-
-
 app.use(express.json());  
+
 
 interface Event {
   id: number;
@@ -20,6 +19,15 @@ interface Event {
   organizer: string;
 }
 
+interface Book {
+  id: number;
+  title: string;
+  author_name: string;
+  description: string;
+  groups: string;
+}
+
+//--Event Data
 const events: Event[] = [
   {
     id: 1,
@@ -78,6 +86,48 @@ const events: Event[] = [
   },
 ];
 
+
+//--Book Data
+const books: Book[] = [
+  {
+    id: 1,
+    title: 'Clean Code',
+    author_name: 'Robert C. Martin',
+    description: 'A handbook of agile software craftsmanship.',
+    groups: 'Programming',
+  },
+  {
+    id: 2,
+    title: 'The Pragmatic Programmer',
+    author_name: 'Andrew Hunt, David Thomas',
+    description: 'Practical tips for modern software developers.',
+    groups: 'Programming',
+  },
+  {
+    id: 3,
+    title: 'Designing Data-Intensive Applications',
+    author_name: 'Martin Kleppmann',
+    description: 'Concepts behind reliable, scalable, maintainable systems.',
+    groups: 'Software Architecture',
+  },
+  {
+    id: 4,
+    title: 'Atomic Habits',
+    author_name: 'James Clear',
+    description: 'Small habits, remarkable results.',
+    groups: 'Self Development',
+  },
+  {
+    id: 5,
+    title: 'Deep Work',
+    author_name: 'Cal Newport',
+    description: 'Rules for focused success in a distracted world.',
+    groups: 'Productivity',
+  },
+];
+
+
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!')
 })
@@ -91,6 +141,11 @@ app.get('/test', (req: Request, res: Response) => {
 app.get('/events', (req: Request, res: Response) => {
   res.json(events);
 });
+
+app.get('/books', (req: Request, res: Response) => {
+  res.json(books);
+});
+
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
