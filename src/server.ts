@@ -198,10 +198,22 @@ app.get("/books", (req, res) => {
 
 //--Task 08 ข้อ 1
 app.post("/events", (req, res) => {
+  // console.log("BODY =", req.body);
     const newEvent: Event = req.body;
     newEvent.id = events.length + 1;
     events.push(newEvent);
     res.json(newEvent);
+});
+
+app.post("/books", (req, res) => {
+  const newBook: Book = req.body;
+  newBook.id = books.length + 1;
+  books.push(newBook);
+
+  res.json({
+    message: "Book created successfully",
+    book: newBook
+  });
 });
 
 
