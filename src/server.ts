@@ -158,6 +158,18 @@ app.get("/events", (req, res) => {
   }
 });
 
+//--Task 07 ข้อ 1
+ app.get("/events/:id", (req, res) => {
+    const id = parseInt(req.params.id);
+    const event = events.find((event) => event.id === id);
+    if (event) {
+    res.json(event);
+    } else {
+    res.status(404).send("Event not found");
+    }
+}); 
+
+
 // app.get('/books', (req: Request, res: Response) => {
 //   res.json(books);
 // });
