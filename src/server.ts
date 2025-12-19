@@ -138,11 +138,26 @@ app.get('/test', (req: Request, res: Response) => {
   res.send(output);
 });
 
- app.get("/events", (req, res) => {
-    const category = req.query.category;
-    const filteredEvents = events.filter((event) => event.category === category);
+//--Task 06 ข้อ 2 
+//  app.get("/events", (req, res) => {
+//     const category = req.query.category;
+//     const filteredEvents = events.filter((event) => event.category === category);
+//     res.json(filteredEvents);
+// });
+
+app.get("/events", (req, res) => {
+  const category = req.query.category;
+
+  if (!category) {
+    res.json(events);
+  } else {
+    const filteredEvents = events.filter(
+      (event) => event.category === category
+    );
     res.json(filteredEvents);
+  }
 });
+
 
 
 
