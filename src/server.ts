@@ -158,12 +158,32 @@ app.get("/events", (req, res) => {
   }
 });
 
+// app.get('/books', (req: Request, res: Response) => {
+//   res.json(books);
+// });
 
 
+app.get("/books", (req, res) => {
+  const title = req.query.title as string | undefined;
+  const groups = req.query.groups as string | undefined;
 
-app.get('/books', (req: Request, res: Response) => {
-  res.json(books);
+  let result = books;
+
+  if (title) {
+    result = result.filter((b) =>
+      b.title.toLowerCase().startsWith(title.toLowerCase())
+    );
+  }
+
+  if (groups) {
+    result = result.filter((b) =>
+      b.groups.toLowerCase() === groups.toLowerCase()
+    );
+  }
+
+  res.json(result);
 });
+
 
 
 app.listen(port, () => {
